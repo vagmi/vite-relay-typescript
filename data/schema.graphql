@@ -1,0 +1,3629 @@
+"""The root query type which gives access points into the data universe."""
+type Query implements Node {
+  """
+  Exposes the root query type nested one level down. This is helpful for Relay 1
+  which can only query top level fields if they are in a particular form.
+  """
+  query: Query!
+
+  """
+  The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  """
+  id: ID!
+
+  """Fetches an object given its globally unique `ID`."""
+  node(
+    """The globally unique `ID`."""
+    id: ID!
+  ): Node
+
+  """Reads and enables pagination through a set of `Meal`."""
+  meals(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Meal`."""
+    orderBy: [MealsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MealCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MealFilter
+  ): MealsConnection
+
+  """Reads and enables pagination through a set of `MealPlan`."""
+  mealPlans(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `MealPlan`."""
+    orderBy: [MealPlansOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MealPlanCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MealPlanFilter
+  ): MealPlansConnection
+
+  """Reads and enables pagination through a set of `MealPlanEntry`."""
+  mealPlanEntries(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `MealPlanEntry`."""
+    orderBy: [MealPlanEntriesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MealPlanEntryCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MealPlanEntryFilter
+  ): MealPlanEntriesConnection
+
+  """Reads and enables pagination through a set of `Measure`."""
+  measures(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Measure`."""
+    orderBy: [MeasuresOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MeasureCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MeasureFilter
+  ): MeasuresConnection
+
+  """Reads and enables pagination through a set of `Nutrition`."""
+  nutritions(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Nutrition`."""
+    orderBy: [NutritionsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: NutritionCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: NutritionFilter
+  ): NutritionsConnection
+
+  """Reads and enables pagination through a set of `Person`."""
+  people(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: PersonCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: PersonFilter
+  ): PeopleConnection
+
+  """Reads and enables pagination through a set of `Product`."""
+  products(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Product`."""
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: ProductCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: ProductFilter
+  ): ProductsConnection
+  meal(rowId: BigInt!): Meal
+  mealPlan(rowId: BigInt!): MealPlan
+  mealPlanEntry(rowId: BigInt!): MealPlanEntry
+  measure(rowId: BigInt!): Measure
+  nutrition(rowId: BigInt!): Nutrition
+  person(rowId: BigInt!): Person
+  product(rowId: BigInt!): Product
+
+  """Account details for the currently logged in Person"""
+  currentPerson: CurrentUser
+
+  """Reads a single `Meal` using its globally unique `ID`."""
+  mealById(
+    """The globally unique `ID` to be used in selecting a single `Meal`."""
+    id: ID!
+  ): Meal
+
+  """Reads a single `MealPlan` using its globally unique `ID`."""
+  mealPlanById(
+    """The globally unique `ID` to be used in selecting a single `MealPlan`."""
+    id: ID!
+  ): MealPlan
+
+  """Reads a single `MealPlanEntry` using its globally unique `ID`."""
+  mealPlanEntryById(
+    """
+    The globally unique `ID` to be used in selecting a single `MealPlanEntry`.
+    """
+    id: ID!
+  ): MealPlanEntry
+
+  """Reads a single `Measure` using its globally unique `ID`."""
+  measureById(
+    """The globally unique `ID` to be used in selecting a single `Measure`."""
+    id: ID!
+  ): Measure
+
+  """Reads a single `Nutrition` using its globally unique `ID`."""
+  nutritionById(
+    """The globally unique `ID` to be used in selecting a single `Nutrition`."""
+    id: ID!
+  ): Nutrition
+
+  """Reads a single `Person` using its globally unique `ID`."""
+  personById(
+    """The globally unique `ID` to be used in selecting a single `Person`."""
+    id: ID!
+  ): Person
+
+  """Reads a single `Product` using its globally unique `ID`."""
+  productById(
+    """The globally unique `ID` to be used in selecting a single `Product`."""
+    id: ID!
+  ): Product
+}
+
+"""An object with a globally unique `ID`."""
+interface Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+}
+
+"""A connection to a list of `Meal` values."""
+type MealsConnection {
+  """A list of `Meal` objects."""
+  nodes: [Meal!]!
+
+  """
+  A list of edges which contains the `Meal` and cursor to aid in pagination.
+  """
+  edges: [MealsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Meal` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""
+Meal details which comprise a recipe including ingredients and measurements along with preparation instructions.
+"""
+type Meal implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  rowId: BigInt!
+
+  """??"""
+  code: String!
+
+  """Short name or title in English"""
+  nameEn: String!
+
+  """Short name or title in French"""
+  nameFr: String
+
+  """
+  A list of tags (strings) used to apply attributes to the Meal/recipe. May include things like "vegetarian" or "contains peanuts" to facilitate filtering and matching with user's dietrary needs and so forth. Tag values are determined by the user.
+  """
+  tags: [String]
+
+  """
+  Longer form description of the recipe to complement the name, in English
+  """
+  descriptionEn: String
+
+  """
+  Longer form description of the recipe to complement the name, in French
+  """
+  descriptionFr: String
+
+  """
+  Categories for which this Meal is appropriate. This is used to restrict Categories to which a Meal may be assigned within a Meal Plan. These iclude "Breakfast", "Lunch", "Dinner", "Snack"
+  """
+  categories: [CategoryT]
+
+  """??"""
+  photoUrl: String
+
+  """??"""
+  videoUrl: String
+
+  """
+  The instructions for preparing the recipe, usually in point form. Plain text formatting determined by the user.
+  """
+  method: String
+
+  """The typical time to complete the recipe, in minutes."""
+  cookingDuration: BigFloat
+
+  """An estimate of the cost of ingredients."""
+  totalCost: BigFloat
+
+  """An estimate of the cost per serving."""
+  servingCost: BigFloat
+
+  """
+  Some tips and tricks that could help make recipe preparation successful.
+  """
+  tips: String
+
+  """The numerical size of each serving, combines with servingSizeUnit"""
+  servingsSize: BigFloat
+
+  """The unit of measure to complement servingSize"""
+  servingsSizeUnit: String
+
+  """The number of people this recipe is meant to serve."""
+  serves: BigFloat
+
+  """An overall nutritional quality rating from 1 - 10"""
+  nutritionRating: Int
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  """Reads and enables pagination through a set of `Measure`."""
+  measures(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Measure`."""
+    orderBy: [MeasuresOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MeasureCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MeasureFilter
+  ): MeasuresConnection!
+
+  """Reads and enables pagination through a set of `MealPlanEntry`."""
+  mealPlanEntries(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `MealPlanEntry`."""
+    orderBy: [MealPlanEntriesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MealPlanEntryCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MealPlanEntryFilter
+  ): MealPlanEntriesConnection!
+
+  """
+  Provides a link to the detailed nutritional break down for the recipe, similar to the nutrition label on a Product, if available.
+  """
+  nutrition: Nutrition
+
+  """
+  Provides a link between a Meal and all the Products that are used within it as ingredients.
+  """
+  products(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: ProductFilter
+  ): ProductsConnection!
+}
+
+"""
+A signed eight-byte integer. The upper big integer values are greater than the
+max value for a JavaScript number. Therefore all big integers will be output as
+strings and not numbers.
+"""
+scalar BigInt
+
+"""
+Possible values for Meal category. "Breakfast","Lunch","Dinner","Snack"
+"""
+enum CategoryT {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+}
+
+"""
+A floating point number that requires more precision than IEEE 754 binary 64
+"""
+scalar BigFloat
+
+"""
+A point in time as described by the [ISO
+8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
+"""
+scalar Datetime
+
+"""A connection to a list of `Measure` values."""
+type MeasuresConnection {
+  """A list of `Measure` objects."""
+  nodes: [Measure!]!
+
+  """
+  A list of edges which contains the `Measure` and cursor to aid in pagination.
+  """
+  edges: [MeasuresEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Measure` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""
+Measurement details for each of the ingredients in the recipe. Specific to the recipe, not to be confused with the Product quantity and unit.
+"""
+type Measure implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  rowId: BigInt!
+
+  """
+  The measurement type to be used by the preparer, i.e. tsp, tbsp, cup, mL, etc.
+  """
+  unit: String!
+
+  """
+  The numerical part of the measurement to be used by the preparer. Combines with unit to describe the measurement such as 1 tbsp, etc.
+  """
+  quantity: BigFloat!
+
+  """
+  Reference to the Product item as it would be purchased. Provides individual product naming, nutrition, etc.
+  """
+  productId: BigInt!
+
+  """Reference back to the Meal for which this is an ingredient."""
+  mealId: BigInt!
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  """Reads a single `Product` that is related to this `Measure`."""
+  product: Product
+
+  """Reads a single `Meal` that is related to this `Measure`."""
+  meal: Meal
+}
+
+"""
+Product details for off-the-shelf ingredients. In a Meal this combines with the measure to describe the ingredient and portion. The Product list from Meals in a Meal Plan will be input to a Shopping List.
+"""
+type Product implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  rowId: BigInt!
+
+  """Product name in English"""
+  nameEn: String!
+
+  """Product name in French"""
+  nameFr: String
+
+  """??"""
+  code: String!
+
+  """Dollar value in CAD"""
+  price: BigFloat!
+
+  """
+  The number of units in the item as it is sold. Combines with unit to determine the amount of Product in the item.
+  """
+  quantity: BigFloat!
+
+  """
+  The unit of measurement applied to quantity to determine amount of Product sold.
+  """
+  unit: String!
+
+  """??"""
+  isArchived: Boolean!
+
+  """The Universal Product Code or SKU for the retail Product."""
+  upc: String
+
+  """
+  A link to a retailer's listing of the Product. This is meant to be a reference to the source of data for Quantity, Price, UPC, etc.
+  """
+  sourceLink: String
+
+  """
+  A list of tags (strings) used to apply attributes to the product listing. May include things like "vegetarian" or "contains peanuts" to facilitate filtering and matching with user's dietrary needs and so forth. Tag values are determined by the user.
+  """
+  tags: [String]
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  """Reads and enables pagination through a set of `Measure`."""
+  measures(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `Measure`."""
+    orderBy: [MeasuresOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MeasureCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MeasureFilter
+  ): MeasuresConnection!
+
+  """
+  Provides a link between Product and the Meals in which it is included as an ingredient.
+  """
+  meals(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MealFilter
+  ): MealsConnection!
+
+  """
+  Provides a link from Product to the specific nutritional value for the retail Product item, i.e. the nutritional label on the Product packaging.
+  """
+  nutrition: Nutrition
+}
+
+"""A location in a connection that can be used for resuming pagination."""
+scalar Cursor
+
+"""Methods to use when ordering `Measure`."""
+enum MeasuresOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PRODUCT_ID_ASC
+  PRODUCT_ID_DESC
+  MEAL_ID_ASC
+  MEAL_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Measure` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input MeasureCondition {
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: BigInt
+
+  """Checks for equality with the object’s `productId` field."""
+  productId: BigInt
+
+  """Checks for equality with the object’s `mealId` field."""
+  mealId: BigInt
+}
+
+"""
+A filter to be used against `Measure` object types. All fields are combined with a logical ‘and.’
+"""
+input MeasureFilter {
+  """Filter by the object’s `rowId` field."""
+  rowId: BigIntFilter
+
+  """Filter by the object’s `productId` field."""
+  productId: BigIntFilter
+
+  """Filter by the object’s `mealId` field."""
+  mealId: BigIntFilter
+
+  """Checks for all expressions in this list."""
+  and: [MeasureFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [MeasureFilter!]
+
+  """Negates the expression."""
+  not: MeasureFilter
+}
+
+"""
+A filter to be used against BigInt fields. All fields are combined with a logical ‘and.’
+"""
+input BigIntFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: BigInt
+
+  """Not equal to the specified value."""
+  notEqualTo: BigInt
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: BigInt
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: BigInt
+
+  """Included in the specified list."""
+  in: [BigInt!]
+
+  """Not included in the specified list."""
+  notIn: [BigInt!]
+
+  """Less than the specified value."""
+  lessThan: BigInt
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: BigInt
+
+  """Greater than the specified value."""
+  greaterThan: BigInt
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: BigInt
+}
+
+"""
+A filter to be used against `Meal` object types. All fields are combined with a logical ‘and.’
+"""
+input MealFilter {
+  """Filter by the object’s `rowId` field."""
+  rowId: BigIntFilter
+
+  """Checks for all expressions in this list."""
+  and: [MealFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [MealFilter!]
+
+  """Negates the expression."""
+  not: MealFilter
+}
+
+"""
+Nutrition details that can be applied to Meals or Products. Not directly related to any other object, the nutritionable_id and nutritional_type are combined to determine the application.
+"""
+type Nutrition implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  rowId: BigInt!
+  servingsPerContainer: BigFloat
+  servingSize: BigFloat
+  servingSizeUnit: String
+  servingSizeText: String
+  calories: BigFloat
+  totalFat: BigFloat
+  totalFatUnit: String
+  totalFatPercent: BigFloat
+  saturatedFat: BigFloat
+  saturatedFatUnit: String
+  saturatedFatPercent: BigFloat
+  transFat: BigFloat
+  transFatUnit: String
+  transFatPercent: BigFloat
+  cholesterol: BigFloat
+  cholesterolUnit: String
+  cholesterolPercent: BigFloat
+  sodium: BigFloat
+  sodiumUnit: String
+  sodiumPercent: BigFloat
+  carbohydrate: BigFloat
+  carbohydrateUnit: String
+  carbohydratePercent: BigFloat
+  dietaryFiber: BigFloat
+  dietaryFiberUnit: String
+  dietaryFiberPercent: BigFloat
+  totalSugar: BigFloat
+  totalSugarUnit: String
+  totalSugarPercent: BigFloat
+  protein: BigFloat
+  proteinUnit: String
+  proteinPercent: BigFloat
+  vitA: BigFloat
+  vitC: BigFloat
+  vitD: BigFloat
+  vitB6: BigFloat
+  vitB12: BigFloat
+  vitK: BigFloat
+  vitE: BigFloat
+  calcium: BigFloat
+  iron: BigFloat
+  potassium: BigFloat
+  nutritionableId: BigInt!
+  nutritionableType: String!
+  createdAt: Datetime!
+  updatedAt: Datetime!
+}
+
+"""A `Measure` edge in the connection."""
+type MeasuresEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Measure` at the end of the edge."""
+  node: Measure!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: Cursor
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: Cursor
+}
+
+"""A connection to a list of `MealPlanEntry` values."""
+type MealPlanEntriesConnection {
+  """A list of `MealPlanEntry` objects."""
+  nodes: [MealPlanEntry!]!
+
+  """
+  A list of edges which contains the `MealPlanEntry` and cursor to aid in pagination.
+  """
+  edges: [MealPlanEntriesEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `MealPlanEntry` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""
+Entries are Meals assigned to days of the week and specific meal times (Breakfast, Lunch, etc) within a specific Plan.
+"""
+type MealPlanEntry implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  rowId: BigInt!
+
+  """
+  Category or mealtime for the assigned Meal. Can be one of "Breakfast", "Lunch", "Dinner" or "Snack" 
+  """
+  category: CategoryT!
+
+  """MONDAY: 0, TUESDAY: 1.., SUNDAY: 6"""
+  days: Int!
+
+  """Reference to the Plan in which item belongs."""
+  mealPlanId: BigInt!
+
+  """The Meal that is being assigned to the plan."""
+  mealId: BigInt!
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  """Reads a single `MealPlan` that is related to this `MealPlanEntry`."""
+  mealPlan: MealPlan
+
+  """Reads a single `Meal` that is related to this `MealPlanEntry`."""
+  meal: Meal
+}
+
+"""
+Collection of Meals, organized together in a Plan, typically a weekly plan.
+"""
+type MealPlan implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+  rowId: BigInt!
+
+  """A short name for the Plan in English"""
+  nameEn: String!
+
+  """A short name for the Plan in French"""
+  nameFr: String
+
+  """A full description of the Meal Plan in English"""
+  descriptionEn: String
+
+  """A full description of the Meal Plan in French"""
+  descriptionFr: String
+
+  """Reference to the Person who is the assignee of the Plan"""
+  personId: BigInt
+
+  """
+  A list of tags (strings) used to apply attributes to the Meal Plan. May include things like "week one" or "for 5" to facilitate filtering help the user organize plans
+  """
+  tags: [String]
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  """Reads a single `Person` that is related to this `MealPlan`."""
+  person: Person
+
+  """Reads and enables pagination through a set of `MealPlanEntry`."""
+  mealPlanEntries(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `MealPlanEntry`."""
+    orderBy: [MealPlanEntriesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MealPlanEntryCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MealPlanEntryFilter
+  ): MealPlanEntriesConnection!
+
+  """
+  Generate a shopping list from the Products referenced by the Meals in this Meal Plan.
+  """
+  shoppingList(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+  ): ShoppingListItemsConnection!
+}
+
+"""
+Person represents a user that can log in and work with the application based on their role.
+"""
+type Person implements Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+
+  """database id (PK) for the Person"""
+  rowId: BigInt!
+
+  """Person's full name"""
+  fullName: String!
+  createdAt: Datetime!
+  updatedAt: Datetime!
+
+  """Reads and enables pagination through a set of `MealPlan`."""
+  mealPlans(
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """The method to use when ordering `MealPlan`."""
+    orderBy: [MealPlansOrderBy!] = [PRIMARY_KEY_ASC]
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: MealPlanCondition
+
+    """
+    A filter to be used in determining which values should be returned by the collection.
+    """
+    filter: MealPlanFilter
+  ): MealPlansConnection!
+}
+
+"""A connection to a list of `MealPlan` values."""
+type MealPlansConnection {
+  """A list of `MealPlan` objects."""
+  nodes: [MealPlan!]!
+
+  """
+  A list of edges which contains the `MealPlan` and cursor to aid in pagination.
+  """
+  edges: [MealPlansEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `MealPlan` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `MealPlan` edge in the connection."""
+type MealPlansEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `MealPlan` at the end of the edge."""
+  node: MealPlan!
+}
+
+"""Methods to use when ordering `MealPlan`."""
+enum MealPlansOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PERSON_ID_ASC
+  PERSON_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `MealPlan` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input MealPlanCondition {
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: BigInt
+
+  """Checks for equality with the object’s `personId` field."""
+  personId: BigInt
+}
+
+"""
+A filter to be used against `MealPlan` object types. All fields are combined with a logical ‘and.’
+"""
+input MealPlanFilter {
+  """Filter by the object’s `rowId` field."""
+  rowId: BigIntFilter
+
+  """Filter by the object’s `personId` field."""
+  personId: BigIntFilter
+
+  """Checks for all expressions in this list."""
+  and: [MealPlanFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [MealPlanFilter!]
+
+  """Negates the expression."""
+  not: MealPlanFilter
+}
+
+"""Methods to use when ordering `MealPlanEntry`."""
+enum MealPlanEntriesOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  CATEGORY_ASC
+  CATEGORY_DESC
+  DAYS_ASC
+  DAYS_DESC
+  MEAL_PLAN_ID_ASC
+  MEAL_PLAN_ID_DESC
+  MEAL_ID_ASC
+  MEAL_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `MealPlanEntry` object types. All fields are
+tested for equality and combined with a logical ‘and.’
+"""
+input MealPlanEntryCondition {
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: BigInt
+
+  """Checks for equality with the object’s `category` field."""
+  category: CategoryT
+
+  """Checks for equality with the object’s `days` field."""
+  days: Int
+
+  """Checks for equality with the object’s `mealPlanId` field."""
+  mealPlanId: BigInt
+
+  """Checks for equality with the object’s `mealId` field."""
+  mealId: BigInt
+}
+
+"""
+A filter to be used against `MealPlanEntry` object types. All fields are combined with a logical ‘and.’
+"""
+input MealPlanEntryFilter {
+  """Filter by the object’s `rowId` field."""
+  rowId: BigIntFilter
+
+  """Filter by the object’s `category` field."""
+  category: CategoryTFilter
+
+  """Filter by the object’s `days` field."""
+  days: IntFilter
+
+  """Filter by the object’s `mealPlanId` field."""
+  mealPlanId: BigIntFilter
+
+  """Filter by the object’s `mealId` field."""
+  mealId: BigIntFilter
+
+  """Checks for all expressions in this list."""
+  and: [MealPlanEntryFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [MealPlanEntryFilter!]
+
+  """Negates the expression."""
+  not: MealPlanEntryFilter
+}
+
+"""
+A filter to be used against CategoryT fields. All fields are combined with a logical ‘and.’
+"""
+input CategoryTFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: CategoryT
+
+  """Not equal to the specified value."""
+  notEqualTo: CategoryT
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: CategoryT
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: CategoryT
+
+  """Included in the specified list."""
+  in: [CategoryT!]
+
+  """Not included in the specified list."""
+  notIn: [CategoryT!]
+
+  """Less than the specified value."""
+  lessThan: CategoryT
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: CategoryT
+
+  """Greater than the specified value."""
+  greaterThan: CategoryT
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: CategoryT
+}
+
+"""
+A filter to be used against Int fields. All fields are combined with a logical ‘and.’
+"""
+input IntFilter {
+  """
+  Is null (if `true` is specified) or is not null (if `false` is specified).
+  """
+  isNull: Boolean
+
+  """Equal to the specified value."""
+  equalTo: Int
+
+  """Not equal to the specified value."""
+  notEqualTo: Int
+
+  """
+  Not equal to the specified value, treating null like an ordinary value.
+  """
+  distinctFrom: Int
+
+  """Equal to the specified value, treating null like an ordinary value."""
+  notDistinctFrom: Int
+
+  """Included in the specified list."""
+  in: [Int!]
+
+  """Not included in the specified list."""
+  notIn: [Int!]
+
+  """Less than the specified value."""
+  lessThan: Int
+
+  """Less than or equal to the specified value."""
+  lessThanOrEqualTo: Int
+
+  """Greater than the specified value."""
+  greaterThan: Int
+
+  """Greater than or equal to the specified value."""
+  greaterThanOrEqualTo: Int
+}
+
+"""A connection to a list of `ShoppingListItem` values."""
+type ShoppingListItemsConnection {
+  """A list of `ShoppingListItem` objects."""
+  nodes: [ShoppingListItem!]!
+
+  """
+  A list of edges which contains the `ShoppingListItem` and cursor to aid in pagination.
+  """
+  edges: [ShoppingListItemsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """
+  The count of *all* `ShoppingListItem` you could get from the connection.
+  """
+  totalCount: Int!
+}
+
+type ShoppingListItem {
+  productId: BigInt
+  productName: String
+  quantity: BigFloat
+  unit: String
+
+  """Provides the product details for the shopping list item"""
+  product: Product
+}
+
+"""A `ShoppingListItem` edge in the connection."""
+type ShoppingListItemsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `ShoppingListItem` at the end of the edge."""
+  node: ShoppingListItem!
+}
+
+"""A `MealPlanEntry` edge in the connection."""
+type MealPlanEntriesEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `MealPlanEntry` at the end of the edge."""
+  node: MealPlanEntry!
+}
+
+"""A connection to a list of `Product` values."""
+type ProductsConnection {
+  """A list of `Product` objects."""
+  nodes: [Product!]!
+
+  """
+  A list of edges which contains the `Product` and cursor to aid in pagination.
+  """
+  edges: [ProductsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Product` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Product` edge in the connection."""
+type ProductsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Product` at the end of the edge."""
+  node: Product!
+}
+
+"""
+A filter to be used against `Product` object types. All fields are combined with a logical ‘and.’
+"""
+input ProductFilter {
+  """Filter by the object’s `rowId` field."""
+  rowId: BigIntFilter
+
+  """Checks for all expressions in this list."""
+  and: [ProductFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [ProductFilter!]
+
+  """Negates the expression."""
+  not: ProductFilter
+}
+
+"""A `Meal` edge in the connection."""
+type MealsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Meal` at the end of the edge."""
+  node: Meal!
+}
+
+"""Methods to use when ordering `Meal`."""
+enum MealsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Meal` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input MealCondition {
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: BigInt
+}
+
+"""A connection to a list of `Nutrition` values."""
+type NutritionsConnection {
+  """A list of `Nutrition` objects."""
+  nodes: [Nutrition!]!
+
+  """
+  A list of edges which contains the `Nutrition` and cursor to aid in pagination.
+  """
+  edges: [NutritionsEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Nutrition` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Nutrition` edge in the connection."""
+type NutritionsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Nutrition` at the end of the edge."""
+  node: Nutrition!
+}
+
+"""Methods to use when ordering `Nutrition`."""
+enum NutritionsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Nutrition` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input NutritionCondition {
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: BigInt
+}
+
+"""
+A filter to be used against `Nutrition` object types. All fields are combined with a logical ‘and.’
+"""
+input NutritionFilter {
+  """Filter by the object’s `rowId` field."""
+  rowId: BigIntFilter
+
+  """Checks for all expressions in this list."""
+  and: [NutritionFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [NutritionFilter!]
+
+  """Negates the expression."""
+  not: NutritionFilter
+}
+
+"""A connection to a list of `Person` values."""
+type PeopleConnection {
+  """A list of `Person` objects."""
+  nodes: [Person!]!
+
+  """
+  A list of edges which contains the `Person` and cursor to aid in pagination.
+  """
+  edges: [PeopleEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Person` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Person` edge in the connection."""
+type PeopleEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Person` at the end of the edge."""
+  node: Person!
+}
+
+"""Methods to use when ordering `Person`."""
+enum PeopleOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Person` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input PersonCondition {
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: BigInt
+}
+
+"""
+A filter to be used against `Person` object types. All fields are combined with a logical ‘and.’
+"""
+input PersonFilter {
+  """Filter by the object’s `rowId` field."""
+  rowId: BigIntFilter
+
+  """Checks for all expressions in this list."""
+  and: [PersonFilter!]
+
+  """Checks for any expressions in this list."""
+  or: [PersonFilter!]
+
+  """Negates the expression."""
+  not: PersonFilter
+}
+
+"""Methods to use when ordering `Product`."""
+enum ProductsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+"""
+A condition to be used against `Product` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input ProductCondition {
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: BigInt
+}
+
+type CurrentUser {
+  rowId: BigInt
+  role: String
+  email: String
+  fullName: String
+
+  """Person details for current_user."""
+  person: Person
+  avatar: String!
+}
+
+"""
+The root mutation type which contains root level fields which mutate data.
+"""
+type Mutation {
+  """Creates a single `Meal`."""
+  createMeal(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateMealInput!
+  ): CreateMealPayload
+
+  """Creates a single `MealPlan`."""
+  createMealPlan(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateMealPlanInput!
+  ): CreateMealPlanPayload
+
+  """Creates a single `MealPlanEntry`."""
+  createMealPlanEntry(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateMealPlanEntryInput!
+  ): CreateMealPlanEntryPayload
+
+  """Creates a single `Measure`."""
+  createMeasure(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateMeasureInput!
+  ): CreateMeasurePayload
+
+  """Creates a single `Nutrition`."""
+  createNutrition(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateNutritionInput!
+  ): CreateNutritionPayload
+
+  """Creates a single `Person`."""
+  createPerson(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreatePersonInput!
+  ): CreatePersonPayload
+
+  """Creates a single `Product`."""
+  createProduct(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateProductInput!
+  ): CreateProductPayload
+
+  """Updates a single `Meal` using its globally unique id and a patch."""
+  updateMealById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMealByIdInput!
+  ): UpdateMealPayload
+
+  """Updates a single `Meal` using a unique key and a patch."""
+  updateMeal(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMealInput!
+  ): UpdateMealPayload
+
+  """Updates a single `MealPlan` using its globally unique id and a patch."""
+  updateMealPlanById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMealPlanByIdInput!
+  ): UpdateMealPlanPayload
+
+  """Updates a single `MealPlan` using a unique key and a patch."""
+  updateMealPlan(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMealPlanInput!
+  ): UpdateMealPlanPayload
+
+  """
+  Updates a single `MealPlanEntry` using its globally unique id and a patch.
+  """
+  updateMealPlanEntryById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMealPlanEntryByIdInput!
+  ): UpdateMealPlanEntryPayload
+
+  """Updates a single `MealPlanEntry` using a unique key and a patch."""
+  updateMealPlanEntry(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMealPlanEntryInput!
+  ): UpdateMealPlanEntryPayload
+
+  """Updates a single `Measure` using its globally unique id and a patch."""
+  updateMeasureById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMeasureByIdInput!
+  ): UpdateMeasurePayload
+
+  """Updates a single `Measure` using a unique key and a patch."""
+  updateMeasure(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateMeasureInput!
+  ): UpdateMeasurePayload
+
+  """Updates a single `Nutrition` using its globally unique id and a patch."""
+  updateNutritionById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateNutritionByIdInput!
+  ): UpdateNutritionPayload
+
+  """Updates a single `Nutrition` using a unique key and a patch."""
+  updateNutrition(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateNutritionInput!
+  ): UpdateNutritionPayload
+
+  """Updates a single `Person` using its globally unique id and a patch."""
+  updatePersonById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePersonByIdInput!
+  ): UpdatePersonPayload
+
+  """Updates a single `Person` using a unique key and a patch."""
+  updatePerson(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdatePersonInput!
+  ): UpdatePersonPayload
+
+  """Updates a single `Product` using its globally unique id and a patch."""
+  updateProductById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateProductByIdInput!
+  ): UpdateProductPayload
+
+  """Updates a single `Product` using a unique key and a patch."""
+  updateProduct(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateProductInput!
+  ): UpdateProductPayload
+
+  """Deletes a single `Meal` using its globally unique id."""
+  deleteMealById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMealByIdInput!
+  ): DeleteMealPayload
+
+  """Deletes a single `Meal` using a unique key."""
+  deleteMeal(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMealInput!
+  ): DeleteMealPayload
+
+  """Deletes a single `MealPlan` using its globally unique id."""
+  deleteMealPlanById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMealPlanByIdInput!
+  ): DeleteMealPlanPayload
+
+  """Deletes a single `MealPlan` using a unique key."""
+  deleteMealPlan(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMealPlanInput!
+  ): DeleteMealPlanPayload
+
+  """Deletes a single `MealPlanEntry` using its globally unique id."""
+  deleteMealPlanEntryById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMealPlanEntryByIdInput!
+  ): DeleteMealPlanEntryPayload
+
+  """Deletes a single `MealPlanEntry` using a unique key."""
+  deleteMealPlanEntry(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMealPlanEntryInput!
+  ): DeleteMealPlanEntryPayload
+
+  """Deletes a single `Measure` using its globally unique id."""
+  deleteMeasureById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMeasureByIdInput!
+  ): DeleteMeasurePayload
+
+  """Deletes a single `Measure` using a unique key."""
+  deleteMeasure(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteMeasureInput!
+  ): DeleteMeasurePayload
+
+  """Deletes a single `Nutrition` using its globally unique id."""
+  deleteNutritionById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteNutritionByIdInput!
+  ): DeleteNutritionPayload
+
+  """Deletes a single `Nutrition` using a unique key."""
+  deleteNutrition(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteNutritionInput!
+  ): DeleteNutritionPayload
+
+  """Deletes a single `Person` using its globally unique id."""
+  deletePersonById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePersonByIdInput!
+  ): DeletePersonPayload
+
+  """Deletes a single `Person` using a unique key."""
+  deletePerson(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeletePersonInput!
+  ): DeletePersonPayload
+
+  """Deletes a single `Product` using its globally unique id."""
+  deleteProductById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteProductByIdInput!
+  ): DeleteProductPayload
+
+  """Deletes a single `Product` using a unique key."""
+  deleteProduct(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteProductInput!
+  ): DeleteProductPayload
+
+  """
+  Login method for People. Username and password are authenticated against the account table. On success a JWT is created with claims for Person and role.
+  """
+  authenticate(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: AuthenticateInput!
+  ): AuthenticatePayload
+
+  """Elevate Person with p_id to the Admin role"""
+  authorizeAdmin(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: AuthorizeAdminInput!
+  ): AuthorizeAdminPayload
+
+  """Elevate Person with p_id to the Meal Designer role"""
+  authorizeMealDesigner(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: AuthorizeMealDesignerInput!
+  ): AuthorizeMealDesignerPayload
+
+  """Duplicate meal plan by meal designer or admin"""
+  duplicateMealPlan(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DuplicateMealPlanInput!
+  ): DuplicateMealPlanPayload
+
+  """
+  Creates a Person plus private account details (username, password). People with account details may log in. By default the first registered Person will have role admin, others will start with lowest privilege. see authorize* to elevate privilege.
+  """
+  registerPerson(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: RegisterPersonInput!
+  ): RegisterPersonPayload
+}
+
+"""The output of our create `Meal` mutation."""
+type CreateMealPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Meal` that was created by this mutation."""
+  meal: Meal
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Meal`. May be used by Relay 1."""
+  mealEdge(
+    """The method to use when ordering `Meal`."""
+    orderBy: [MealsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealsEdge
+}
+
+"""All input for the create `Meal` mutation."""
+input CreateMealInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Meal` to be created by this mutation."""
+  meal: MealInput!
+}
+
+"""An input for mutations affecting `Meal`"""
+input MealInput {
+  rowId: BigInt
+
+  """??"""
+  code: String!
+
+  """Short name or title in English"""
+  nameEn: String!
+
+  """Short name or title in French"""
+  nameFr: String
+
+  """
+  A list of tags (strings) used to apply attributes to the Meal/recipe. May include things like "vegetarian" or "contains peanuts" to facilitate filtering and matching with user's dietrary needs and so forth. Tag values are determined by the user.
+  """
+  tags: [String]
+
+  """
+  Longer form description of the recipe to complement the name, in English
+  """
+  descriptionEn: String
+
+  """
+  Longer form description of the recipe to complement the name, in French
+  """
+  descriptionFr: String
+
+  """
+  Categories for which this Meal is appropriate. This is used to restrict Categories to which a Meal may be assigned within a Meal Plan. These iclude "Breakfast", "Lunch", "Dinner", "Snack"
+  """
+  categories: [CategoryT]
+
+  """??"""
+  photoUrl: String
+
+  """??"""
+  videoUrl: String
+
+  """
+  The instructions for preparing the recipe, usually in point form. Plain text formatting determined by the user.
+  """
+  method: String
+
+  """The typical time to complete the recipe, in minutes."""
+  cookingDuration: BigFloat
+
+  """An estimate of the cost of ingredients."""
+  totalCost: BigFloat
+
+  """An estimate of the cost per serving."""
+  servingCost: BigFloat
+
+  """
+  Some tips and tricks that could help make recipe preparation successful.
+  """
+  tips: String
+
+  """The numerical size of each serving, combines with servingSizeUnit"""
+  servingsSize: BigFloat
+
+  """The unit of measure to complement servingSize"""
+  servingsSizeUnit: String
+
+  """The number of people this recipe is meant to serve."""
+  serves: BigFloat
+
+  """An overall nutritional quality rating from 1 - 10"""
+  nutritionRating: Int
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""The output of our create `MealPlan` mutation."""
+type CreateMealPlanPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `MealPlan` that was created by this mutation."""
+  mealPlan: MealPlan
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Person` that is related to this `MealPlan`."""
+  person: Person
+
+  """An edge for our `MealPlan`. May be used by Relay 1."""
+  mealPlanEdge(
+    """The method to use when ordering `MealPlan`."""
+    orderBy: [MealPlansOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealPlansEdge
+}
+
+"""All input for the create `MealPlan` mutation."""
+input CreateMealPlanInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `MealPlan` to be created by this mutation."""
+  mealPlan: MealPlanInput!
+}
+
+"""An input for mutations affecting `MealPlan`"""
+input MealPlanInput {
+  rowId: BigInt
+
+  """A short name for the Plan in English"""
+  nameEn: String!
+
+  """A short name for the Plan in French"""
+  nameFr: String
+
+  """A full description of the Meal Plan in English"""
+  descriptionEn: String
+
+  """A full description of the Meal Plan in French"""
+  descriptionFr: String
+
+  """Reference to the Person who is the assignee of the Plan"""
+  personId: BigInt
+
+  """
+  A list of tags (strings) used to apply attributes to the Meal Plan. May include things like "week one" or "for 5" to facilitate filtering help the user organize plans
+  """
+  tags: [String]
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""The output of our create `MealPlanEntry` mutation."""
+type CreateMealPlanEntryPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `MealPlanEntry` that was created by this mutation."""
+  mealPlanEntry: MealPlanEntry
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `MealPlan` that is related to this `MealPlanEntry`."""
+  mealPlan: MealPlan
+
+  """Reads a single `Meal` that is related to this `MealPlanEntry`."""
+  meal: Meal
+
+  """An edge for our `MealPlanEntry`. May be used by Relay 1."""
+  mealPlanEntryEdge(
+    """The method to use when ordering `MealPlanEntry`."""
+    orderBy: [MealPlanEntriesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealPlanEntriesEdge
+}
+
+"""All input for the create `MealPlanEntry` mutation."""
+input CreateMealPlanEntryInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `MealPlanEntry` to be created by this mutation."""
+  mealPlanEntry: MealPlanEntryInput!
+}
+
+"""An input for mutations affecting `MealPlanEntry`"""
+input MealPlanEntryInput {
+  rowId: BigInt
+
+  """
+  Category or mealtime for the assigned Meal. Can be one of "Breakfast", "Lunch", "Dinner" or "Snack" 
+  """
+  category: CategoryT!
+
+  """MONDAY: 0, TUESDAY: 1.., SUNDAY: 6"""
+  days: Int!
+
+  """Reference to the Plan in which item belongs."""
+  mealPlanId: BigInt!
+
+  """The Meal that is being assigned to the plan."""
+  mealId: BigInt!
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""The output of our create `Measure` mutation."""
+type CreateMeasurePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Measure` that was created by this mutation."""
+  measure: Measure
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Product` that is related to this `Measure`."""
+  product: Product
+
+  """Reads a single `Meal` that is related to this `Measure`."""
+  meal: Meal
+
+  """An edge for our `Measure`. May be used by Relay 1."""
+  measureEdge(
+    """The method to use when ordering `Measure`."""
+    orderBy: [MeasuresOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MeasuresEdge
+}
+
+"""All input for the create `Measure` mutation."""
+input CreateMeasureInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Measure` to be created by this mutation."""
+  measure: MeasureInput!
+}
+
+"""An input for mutations affecting `Measure`"""
+input MeasureInput {
+  rowId: BigInt
+
+  """
+  The measurement type to be used by the preparer, i.e. tsp, tbsp, cup, mL, etc.
+  """
+  unit: String!
+
+  """
+  The numerical part of the measurement to be used by the preparer. Combines with unit to describe the measurement such as 1 tbsp, etc.
+  """
+  quantity: BigFloat!
+
+  """
+  Reference to the Product item as it would be purchased. Provides individual product naming, nutrition, etc.
+  """
+  productId: BigInt!
+
+  """Reference back to the Meal for which this is an ingredient."""
+  mealId: BigInt!
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""The output of our create `Nutrition` mutation."""
+type CreateNutritionPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Nutrition` that was created by this mutation."""
+  nutrition: Nutrition
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Nutrition`. May be used by Relay 1."""
+  nutritionEdge(
+    """The method to use when ordering `Nutrition`."""
+    orderBy: [NutritionsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): NutritionsEdge
+}
+
+"""All input for the create `Nutrition` mutation."""
+input CreateNutritionInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Nutrition` to be created by this mutation."""
+  nutrition: NutritionInput!
+}
+
+"""An input for mutations affecting `Nutrition`"""
+input NutritionInput {
+  rowId: BigInt
+  servingsPerContainer: BigFloat
+  servingSize: BigFloat
+  servingSizeUnit: String
+  servingSizeText: String
+  calories: BigFloat
+  totalFat: BigFloat
+  totalFatUnit: String
+  totalFatPercent: BigFloat
+  saturatedFat: BigFloat
+  saturatedFatUnit: String
+  saturatedFatPercent: BigFloat
+  transFat: BigFloat
+  transFatUnit: String
+  transFatPercent: BigFloat
+  cholesterol: BigFloat
+  cholesterolUnit: String
+  cholesterolPercent: BigFloat
+  sodium: BigFloat
+  sodiumUnit: String
+  sodiumPercent: BigFloat
+  carbohydrate: BigFloat
+  carbohydrateUnit: String
+  carbohydratePercent: BigFloat
+  dietaryFiber: BigFloat
+  dietaryFiberUnit: String
+  dietaryFiberPercent: BigFloat
+  totalSugar: BigFloat
+  totalSugarUnit: String
+  totalSugarPercent: BigFloat
+  protein: BigFloat
+  proteinUnit: String
+  proteinPercent: BigFloat
+  vitA: BigFloat
+  vitC: BigFloat
+  vitD: BigFloat
+  vitB6: BigFloat
+  vitB12: BigFloat
+  vitK: BigFloat
+  vitE: BigFloat
+  calcium: BigFloat
+  iron: BigFloat
+  potassium: BigFloat
+  nutritionableId: BigInt!
+  nutritionableType: String!
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""The output of our create `Person` mutation."""
+type CreatePersonPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Person` that was created by this mutation."""
+  person: Person
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Person`. May be used by Relay 1."""
+  personEdge(
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PeopleEdge
+}
+
+"""All input for the create `Person` mutation."""
+input CreatePersonInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Person` to be created by this mutation."""
+  person: PersonInput!
+}
+
+"""An input for mutations affecting `Person`"""
+input PersonInput {
+  """database id (PK) for the Person"""
+  rowId: BigInt
+
+  """Person's full name"""
+  fullName: String!
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""The output of our create `Product` mutation."""
+type CreateProductPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Product` that was created by this mutation."""
+  product: Product
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Product`. May be used by Relay 1."""
+  productEdge(
+    """The method to use when ordering `Product`."""
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ProductsEdge
+}
+
+"""All input for the create `Product` mutation."""
+input CreateProductInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Product` to be created by this mutation."""
+  product: ProductInput!
+}
+
+"""An input for mutations affecting `Product`"""
+input ProductInput {
+  rowId: BigInt
+
+  """Product name in English"""
+  nameEn: String!
+
+  """Product name in French"""
+  nameFr: String
+
+  """??"""
+  code: String!
+
+  """Dollar value in CAD"""
+  price: BigFloat!
+
+  """
+  The number of units in the item as it is sold. Combines with unit to determine the amount of Product in the item.
+  """
+  quantity: BigFloat!
+
+  """
+  The unit of measurement applied to quantity to determine amount of Product sold.
+  """
+  unit: String!
+
+  """??"""
+  isArchived: Boolean
+
+  """The Universal Product Code or SKU for the retail Product."""
+  upc: String
+
+  """
+  A link to a retailer's listing of the Product. This is meant to be a reference to the source of data for Quantity, Price, UPC, etc.
+  """
+  sourceLink: String
+
+  """
+  A list of tags (strings) used to apply attributes to the product listing. May include things like "vegetarian" or "contains peanuts" to facilitate filtering and matching with user's dietrary needs and so forth. Tag values are determined by the user.
+  """
+  tags: [String]
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""The output of our update `Meal` mutation."""
+type UpdateMealPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Meal` that was updated by this mutation."""
+  meal: Meal
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Meal`. May be used by Relay 1."""
+  mealEdge(
+    """The method to use when ordering `Meal`."""
+    orderBy: [MealsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealsEdge
+}
+
+"""All input for the `updateMealById` mutation."""
+input UpdateMealByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Meal` to be updated.
+  """
+  id: ID!
+
+  """
+  An object where the defined keys will be set on the `Meal` being updated.
+  """
+  patch: MealPatch!
+}
+
+"""Represents an update to a `Meal`. Fields that are set will be updated."""
+input MealPatch {
+  rowId: BigInt
+
+  """??"""
+  code: String
+
+  """Short name or title in English"""
+  nameEn: String
+
+  """Short name or title in French"""
+  nameFr: String
+
+  """
+  A list of tags (strings) used to apply attributes to the Meal/recipe. May include things like "vegetarian" or "contains peanuts" to facilitate filtering and matching with user's dietrary needs and so forth. Tag values are determined by the user.
+  """
+  tags: [String]
+
+  """
+  Longer form description of the recipe to complement the name, in English
+  """
+  descriptionEn: String
+
+  """
+  Longer form description of the recipe to complement the name, in French
+  """
+  descriptionFr: String
+
+  """
+  Categories for which this Meal is appropriate. This is used to restrict Categories to which a Meal may be assigned within a Meal Plan. These iclude "Breakfast", "Lunch", "Dinner", "Snack"
+  """
+  categories: [CategoryT]
+
+  """??"""
+  photoUrl: String
+
+  """??"""
+  videoUrl: String
+
+  """
+  The instructions for preparing the recipe, usually in point form. Plain text formatting determined by the user.
+  """
+  method: String
+
+  """The typical time to complete the recipe, in minutes."""
+  cookingDuration: BigFloat
+
+  """An estimate of the cost of ingredients."""
+  totalCost: BigFloat
+
+  """An estimate of the cost per serving."""
+  servingCost: BigFloat
+
+  """
+  Some tips and tricks that could help make recipe preparation successful.
+  """
+  tips: String
+
+  """The numerical size of each serving, combines with servingSizeUnit"""
+  servingsSize: BigFloat
+
+  """The unit of measure to complement servingSize"""
+  servingsSizeUnit: String
+
+  """The number of people this recipe is meant to serve."""
+  serves: BigFloat
+
+  """An overall nutritional quality rating from 1 - 10"""
+  nutritionRating: Int
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""All input for the `updateMeal` mutation."""
+input UpdateMealInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Meal` being updated.
+  """
+  patch: MealPatch!
+  rowId: BigInt!
+}
+
+"""The output of our update `MealPlan` mutation."""
+type UpdateMealPlanPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `MealPlan` that was updated by this mutation."""
+  mealPlan: MealPlan
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Person` that is related to this `MealPlan`."""
+  person: Person
+
+  """An edge for our `MealPlan`. May be used by Relay 1."""
+  mealPlanEdge(
+    """The method to use when ordering `MealPlan`."""
+    orderBy: [MealPlansOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealPlansEdge
+}
+
+"""All input for the `updateMealPlanById` mutation."""
+input UpdateMealPlanByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `MealPlan` to be updated.
+  """
+  id: ID!
+
+  """
+  An object where the defined keys will be set on the `MealPlan` being updated.
+  """
+  patch: MealPlanPatch!
+}
+
+"""
+Represents an update to a `MealPlan`. Fields that are set will be updated.
+"""
+input MealPlanPatch {
+  rowId: BigInt
+
+  """A short name for the Plan in English"""
+  nameEn: String
+
+  """A short name for the Plan in French"""
+  nameFr: String
+
+  """A full description of the Meal Plan in English"""
+  descriptionEn: String
+
+  """A full description of the Meal Plan in French"""
+  descriptionFr: String
+
+  """Reference to the Person who is the assignee of the Plan"""
+  personId: BigInt
+
+  """
+  A list of tags (strings) used to apply attributes to the Meal Plan. May include things like "week one" or "for 5" to facilitate filtering help the user organize plans
+  """
+  tags: [String]
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""All input for the `updateMealPlan` mutation."""
+input UpdateMealPlanInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `MealPlan` being updated.
+  """
+  patch: MealPlanPatch!
+  rowId: BigInt!
+}
+
+"""The output of our update `MealPlanEntry` mutation."""
+type UpdateMealPlanEntryPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `MealPlanEntry` that was updated by this mutation."""
+  mealPlanEntry: MealPlanEntry
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `MealPlan` that is related to this `MealPlanEntry`."""
+  mealPlan: MealPlan
+
+  """Reads a single `Meal` that is related to this `MealPlanEntry`."""
+  meal: Meal
+
+  """An edge for our `MealPlanEntry`. May be used by Relay 1."""
+  mealPlanEntryEdge(
+    """The method to use when ordering `MealPlanEntry`."""
+    orderBy: [MealPlanEntriesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealPlanEntriesEdge
+}
+
+"""All input for the `updateMealPlanEntryById` mutation."""
+input UpdateMealPlanEntryByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `MealPlanEntry` to be updated.
+  """
+  id: ID!
+
+  """
+  An object where the defined keys will be set on the `MealPlanEntry` being updated.
+  """
+  patch: MealPlanEntryPatch!
+}
+
+"""
+Represents an update to a `MealPlanEntry`. Fields that are set will be updated.
+"""
+input MealPlanEntryPatch {
+  rowId: BigInt
+
+  """
+  Category or mealtime for the assigned Meal. Can be one of "Breakfast", "Lunch", "Dinner" or "Snack" 
+  """
+  category: CategoryT
+
+  """MONDAY: 0, TUESDAY: 1.., SUNDAY: 6"""
+  days: Int
+
+  """Reference to the Plan in which item belongs."""
+  mealPlanId: BigInt
+
+  """The Meal that is being assigned to the plan."""
+  mealId: BigInt
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""All input for the `updateMealPlanEntry` mutation."""
+input UpdateMealPlanEntryInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `MealPlanEntry` being updated.
+  """
+  patch: MealPlanEntryPatch!
+  rowId: BigInt!
+}
+
+"""The output of our update `Measure` mutation."""
+type UpdateMeasurePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Measure` that was updated by this mutation."""
+  measure: Measure
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Product` that is related to this `Measure`."""
+  product: Product
+
+  """Reads a single `Meal` that is related to this `Measure`."""
+  meal: Meal
+
+  """An edge for our `Measure`. May be used by Relay 1."""
+  measureEdge(
+    """The method to use when ordering `Measure`."""
+    orderBy: [MeasuresOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MeasuresEdge
+}
+
+"""All input for the `updateMeasureById` mutation."""
+input UpdateMeasureByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Measure` to be updated.
+  """
+  id: ID!
+
+  """
+  An object where the defined keys will be set on the `Measure` being updated.
+  """
+  patch: MeasurePatch!
+}
+
+"""
+Represents an update to a `Measure`. Fields that are set will be updated.
+"""
+input MeasurePatch {
+  rowId: BigInt
+
+  """
+  The measurement type to be used by the preparer, i.e. tsp, tbsp, cup, mL, etc.
+  """
+  unit: String
+
+  """
+  The numerical part of the measurement to be used by the preparer. Combines with unit to describe the measurement such as 1 tbsp, etc.
+  """
+  quantity: BigFloat
+
+  """
+  Reference to the Product item as it would be purchased. Provides individual product naming, nutrition, etc.
+  """
+  productId: BigInt
+
+  """Reference back to the Meal for which this is an ingredient."""
+  mealId: BigInt
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""All input for the `updateMeasure` mutation."""
+input UpdateMeasureInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Measure` being updated.
+  """
+  patch: MeasurePatch!
+  rowId: BigInt!
+}
+
+"""The output of our update `Nutrition` mutation."""
+type UpdateNutritionPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Nutrition` that was updated by this mutation."""
+  nutrition: Nutrition
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Nutrition`. May be used by Relay 1."""
+  nutritionEdge(
+    """The method to use when ordering `Nutrition`."""
+    orderBy: [NutritionsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): NutritionsEdge
+}
+
+"""All input for the `updateNutritionById` mutation."""
+input UpdateNutritionByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Nutrition` to be updated.
+  """
+  id: ID!
+
+  """
+  An object where the defined keys will be set on the `Nutrition` being updated.
+  """
+  patch: NutritionPatch!
+}
+
+"""
+Represents an update to a `Nutrition`. Fields that are set will be updated.
+"""
+input NutritionPatch {
+  rowId: BigInt
+  servingsPerContainer: BigFloat
+  servingSize: BigFloat
+  servingSizeUnit: String
+  servingSizeText: String
+  calories: BigFloat
+  totalFat: BigFloat
+  totalFatUnit: String
+  totalFatPercent: BigFloat
+  saturatedFat: BigFloat
+  saturatedFatUnit: String
+  saturatedFatPercent: BigFloat
+  transFat: BigFloat
+  transFatUnit: String
+  transFatPercent: BigFloat
+  cholesterol: BigFloat
+  cholesterolUnit: String
+  cholesterolPercent: BigFloat
+  sodium: BigFloat
+  sodiumUnit: String
+  sodiumPercent: BigFloat
+  carbohydrate: BigFloat
+  carbohydrateUnit: String
+  carbohydratePercent: BigFloat
+  dietaryFiber: BigFloat
+  dietaryFiberUnit: String
+  dietaryFiberPercent: BigFloat
+  totalSugar: BigFloat
+  totalSugarUnit: String
+  totalSugarPercent: BigFloat
+  protein: BigFloat
+  proteinUnit: String
+  proteinPercent: BigFloat
+  vitA: BigFloat
+  vitC: BigFloat
+  vitD: BigFloat
+  vitB6: BigFloat
+  vitB12: BigFloat
+  vitK: BigFloat
+  vitE: BigFloat
+  calcium: BigFloat
+  iron: BigFloat
+  potassium: BigFloat
+  nutritionableId: BigInt
+  nutritionableType: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""All input for the `updateNutrition` mutation."""
+input UpdateNutritionInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Nutrition` being updated.
+  """
+  patch: NutritionPatch!
+  rowId: BigInt!
+}
+
+"""The output of our update `Person` mutation."""
+type UpdatePersonPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Person` that was updated by this mutation."""
+  person: Person
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Person`. May be used by Relay 1."""
+  personEdge(
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PeopleEdge
+}
+
+"""All input for the `updatePersonById` mutation."""
+input UpdatePersonByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Person` to be updated.
+  """
+  id: ID!
+
+  """
+  An object where the defined keys will be set on the `Person` being updated.
+  """
+  patch: PersonPatch!
+}
+
+"""
+Represents an update to a `Person`. Fields that are set will be updated.
+"""
+input PersonPatch {
+  """database id (PK) for the Person"""
+  rowId: BigInt
+
+  """Person's full name"""
+  fullName: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""All input for the `updatePerson` mutation."""
+input UpdatePersonInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Person` being updated.
+  """
+  patch: PersonPatch!
+
+  """database id (PK) for the Person"""
+  rowId: BigInt!
+}
+
+"""The output of our update `Product` mutation."""
+type UpdateProductPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Product` that was updated by this mutation."""
+  product: Product
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Product`. May be used by Relay 1."""
+  productEdge(
+    """The method to use when ordering `Product`."""
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ProductsEdge
+}
+
+"""All input for the `updateProductById` mutation."""
+input UpdateProductByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Product` to be updated.
+  """
+  id: ID!
+
+  """
+  An object where the defined keys will be set on the `Product` being updated.
+  """
+  patch: ProductPatch!
+}
+
+"""
+Represents an update to a `Product`. Fields that are set will be updated.
+"""
+input ProductPatch {
+  rowId: BigInt
+
+  """Product name in English"""
+  nameEn: String
+
+  """Product name in French"""
+  nameFr: String
+
+  """??"""
+  code: String
+
+  """Dollar value in CAD"""
+  price: BigFloat
+
+  """
+  The number of units in the item as it is sold. Combines with unit to determine the amount of Product in the item.
+  """
+  quantity: BigFloat
+
+  """
+  The unit of measurement applied to quantity to determine amount of Product sold.
+  """
+  unit: String
+
+  """??"""
+  isArchived: Boolean
+
+  """The Universal Product Code or SKU for the retail Product."""
+  upc: String
+
+  """
+  A link to a retailer's listing of the Product. This is meant to be a reference to the source of data for Quantity, Price, UPC, etc.
+  """
+  sourceLink: String
+
+  """
+  A list of tags (strings) used to apply attributes to the product listing. May include things like "vegetarian" or "contains peanuts" to facilitate filtering and matching with user's dietrary needs and so forth. Tag values are determined by the user.
+  """
+  tags: [String]
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+"""All input for the `updateProduct` mutation."""
+input UpdateProductInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Product` being updated.
+  """
+  patch: ProductPatch!
+  rowId: BigInt!
+}
+
+"""The output of our delete `Meal` mutation."""
+type DeleteMealPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Meal` that was deleted by this mutation."""
+  meal: Meal
+  deletedMealId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Meal`. May be used by Relay 1."""
+  mealEdge(
+    """The method to use when ordering `Meal`."""
+    orderBy: [MealsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealsEdge
+}
+
+"""All input for the `deleteMealById` mutation."""
+input DeleteMealByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Meal` to be deleted.
+  """
+  id: ID!
+}
+
+"""All input for the `deleteMeal` mutation."""
+input DeleteMealInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rowId: BigInt!
+}
+
+"""The output of our delete `MealPlan` mutation."""
+type DeleteMealPlanPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `MealPlan` that was deleted by this mutation."""
+  mealPlan: MealPlan
+  deletedMealPlanId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Person` that is related to this `MealPlan`."""
+  person: Person
+
+  """An edge for our `MealPlan`. May be used by Relay 1."""
+  mealPlanEdge(
+    """The method to use when ordering `MealPlan`."""
+    orderBy: [MealPlansOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealPlansEdge
+}
+
+"""All input for the `deleteMealPlanById` mutation."""
+input DeleteMealPlanByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `MealPlan` to be deleted.
+  """
+  id: ID!
+}
+
+"""All input for the `deleteMealPlan` mutation."""
+input DeleteMealPlanInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rowId: BigInt!
+}
+
+"""The output of our delete `MealPlanEntry` mutation."""
+type DeleteMealPlanEntryPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `MealPlanEntry` that was deleted by this mutation."""
+  mealPlanEntry: MealPlanEntry
+  deletedMealPlanEntryId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `MealPlan` that is related to this `MealPlanEntry`."""
+  mealPlan: MealPlan
+
+  """Reads a single `Meal` that is related to this `MealPlanEntry`."""
+  meal: Meal
+
+  """An edge for our `MealPlanEntry`. May be used by Relay 1."""
+  mealPlanEntryEdge(
+    """The method to use when ordering `MealPlanEntry`."""
+    orderBy: [MealPlanEntriesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealPlanEntriesEdge
+}
+
+"""All input for the `deleteMealPlanEntryById` mutation."""
+input DeleteMealPlanEntryByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `MealPlanEntry` to be deleted.
+  """
+  id: ID!
+}
+
+"""All input for the `deleteMealPlanEntry` mutation."""
+input DeleteMealPlanEntryInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rowId: BigInt!
+}
+
+"""The output of our delete `Measure` mutation."""
+type DeleteMeasurePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Measure` that was deleted by this mutation."""
+  measure: Measure
+  deletedMeasureId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Product` that is related to this `Measure`."""
+  product: Product
+
+  """Reads a single `Meal` that is related to this `Measure`."""
+  meal: Meal
+
+  """An edge for our `Measure`. May be used by Relay 1."""
+  measureEdge(
+    """The method to use when ordering `Measure`."""
+    orderBy: [MeasuresOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MeasuresEdge
+}
+
+"""All input for the `deleteMeasureById` mutation."""
+input DeleteMeasureByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Measure` to be deleted.
+  """
+  id: ID!
+}
+
+"""All input for the `deleteMeasure` mutation."""
+input DeleteMeasureInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rowId: BigInt!
+}
+
+"""The output of our delete `Nutrition` mutation."""
+type DeleteNutritionPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Nutrition` that was deleted by this mutation."""
+  nutrition: Nutrition
+  deletedNutritionId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Nutrition`. May be used by Relay 1."""
+  nutritionEdge(
+    """The method to use when ordering `Nutrition`."""
+    orderBy: [NutritionsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): NutritionsEdge
+}
+
+"""All input for the `deleteNutritionById` mutation."""
+input DeleteNutritionByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Nutrition` to be deleted.
+  """
+  id: ID!
+}
+
+"""All input for the `deleteNutrition` mutation."""
+input DeleteNutritionInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rowId: BigInt!
+}
+
+"""The output of our delete `Person` mutation."""
+type DeletePersonPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Person` that was deleted by this mutation."""
+  person: Person
+  deletedPersonId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Person`. May be used by Relay 1."""
+  personEdge(
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PeopleEdge
+}
+
+"""All input for the `deletePersonById` mutation."""
+input DeletePersonByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Person` to be deleted.
+  """
+  id: ID!
+}
+
+"""All input for the `deletePerson` mutation."""
+input DeletePersonInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """database id (PK) for the Person"""
+  rowId: BigInt!
+}
+
+"""The output of our delete `Product` mutation."""
+type DeleteProductPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Product` that was deleted by this mutation."""
+  product: Product
+  deletedProductId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Product`. May be used by Relay 1."""
+  productEdge(
+    """The method to use when ordering `Product`."""
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ProductsEdge
+}
+
+"""All input for the `deleteProductById` mutation."""
+input DeleteProductByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Product` to be deleted.
+  """
+  id: ID!
+}
+
+"""All input for the `deleteProduct` mutation."""
+input DeleteProductInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rowId: BigInt!
+}
+
+"""The output of our `authenticate` mutation."""
+type AuthenticatePayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  jwtToken: JwtToken
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""
+A JSON Web Token defined by [RFC 7519](https://tools.ietf.org/html/rfc7519)
+which securely represents claims between two parties.
+"""
+scalar JwtToken
+
+"""All input for the `authenticate` mutation."""
+input AuthenticateInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  userEmail: String
+  password: String
+}
+
+"""The output of our `authorizeAdmin` mutation."""
+type AuthorizeAdminPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  person: Person
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Person`. May be used by Relay 1."""
+  personEdge(
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PeopleEdge
+}
+
+"""All input for the `authorizeAdmin` mutation."""
+input AuthorizeAdminInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  pId: BigInt
+}
+
+"""The output of our `authorizeMealDesigner` mutation."""
+type AuthorizeMealDesignerPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  person: Person
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Person`. May be used by Relay 1."""
+  personEdge(
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PeopleEdge
+}
+
+"""All input for the `authorizeMealDesigner` mutation."""
+input AuthorizeMealDesignerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  pId: BigInt
+}
+
+"""The output of our `duplicateMealPlan` mutation."""
+type DuplicateMealPlanPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  mealPlan: MealPlan
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """Reads a single `Person` that is related to this `MealPlan`."""
+  person: Person
+
+  """An edge for our `MealPlan`. May be used by Relay 1."""
+  mealPlanEdge(
+    """The method to use when ordering `MealPlan`."""
+    orderBy: [MealPlansOrderBy!] = [PRIMARY_KEY_ASC]
+  ): MealPlansEdge
+}
+
+"""All input for the `duplicateMealPlan` mutation."""
+input DuplicateMealPlanInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  mealplanId: BigInt
+  pId: BigInt
+}
+
+"""The output of our `registerPerson` mutation."""
+type RegisterPersonPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  person: Person
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """An edge for our `Person`. May be used by Relay 1."""
+  personEdge(
+    """The method to use when ordering `Person`."""
+    orderBy: [PeopleOrderBy!] = [PRIMARY_KEY_ASC]
+  ): PeopleEdge
+}
+
+"""All input for the `registerPerson` mutation."""
+input RegisterPersonInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  fullName: String
+  email: String
+  password: String
+}
