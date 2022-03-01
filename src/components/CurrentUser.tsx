@@ -1,18 +1,9 @@
-import React from 'react';
-import {graphql, useLazyLoadQuery } from "react-relay/hooks";
-import { CurrentUserQuery } from "./__generated__/CurrentUserQuery.graphql";
-
-const userQuery = graphql`
-  query CurrentUserQuery {
-    currentPerson {
-      fullName
-      email
-    }
-  }
-`;
+import * as React from 'react';
+import {useLazyLoadQuery } from "react-relay/hooks";
+import userQuery, { CurrentPersonQuery } from './__generated__/CurrentPersonQuery.graphql';
 
 export const CurrentUser = () => {
-  let data = useLazyLoadQuery<CurrentUserQuery>(
+  let data = useLazyLoadQuery<CurrentPersonQuery>(
     userQuery,
     {},
     { fetchPolicy: "store-or-network" }

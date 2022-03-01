@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d797b3610c3f44386fb6b3c928759583>>
+ * @generated SignedSource<<3f2dbba7ae87e025807b5bd9bb7f5da2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,16 +9,16 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type CurrentUserQuery$variables = {};
-export type CurrentUserQuery$data = {
+export type CurrentPersonQuery$variables = {};
+export type CurrentPersonQuery$data = {
   readonly currentPerson: {
     readonly fullName: string | null;
     readonly email: string | null;
   } | null;
 };
-export type CurrentUserQuery = {
-  variables: CurrentUserQuery$variables;
-  response: CurrentUserQuery$data;
+export type CurrentPersonQuery = {
+  variables: CurrentPersonQuery$variables;
+  response: CurrentPersonQuery$data;
 };
 
 const node: ConcreteRequest = (function(){
@@ -54,7 +54,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "CurrentUserQuery",
+    "name": "CurrentPersonQuery",
     "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
@@ -63,20 +63,20 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "CurrentUserQuery",
+    "name": "CurrentPersonQuery",
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "81978fec4b0c1784e5fb4f1dd29c1675",
+    "cacheID": "0a217ee0d7eda91dc9e8b4458b486fe8",
     "id": null,
     "metadata": {},
-    "name": "CurrentUserQuery",
+    "name": "CurrentPersonQuery",
     "operationKind": "query",
-    "text": "query CurrentUserQuery {\n  currentPerson {\n    fullName\n    email\n  }\n}\n"
+    "text": "query CurrentPersonQuery {\n  currentPerson {\n    fullName\n    email\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "c188ef0bf1babe3c0018f15af211494a";
+(node as any).hash = "21315bac3ac29b5c09e2ad30298f11c0";
 
 export default node;

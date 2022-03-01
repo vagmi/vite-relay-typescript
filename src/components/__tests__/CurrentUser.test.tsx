@@ -1,16 +1,10 @@
-import React from "react";
 import { CurrentUser } from "../CurrentUser";
 import { createMockEnvironment, MockPayloadGenerator } from "relay-test-utils";
-import { act, render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import { RelayEnvironmentProvider } from "react-relay";
-import { Suspense } from "react";
-import { CurrentUserQuery$data } from "../__generated__/CurrentUserQuery.graphql";
+import React, { Suspense } from "react";
+import { CurrentPersonQuery$data } from "../__generated__/CurrentPersonQuery.graphql";
 
-async function waitFor(ms: number) {
-  return new Promise((res, _rej) => {
-    setTimeout(res, ms);
-  });
-}
 describe("CurrentUser", () => {
   it("passes", async () => {
     const env = createMockEnvironment();
@@ -21,35 +15,24 @@ describe("CurrentUser", () => {
         </Suspense>
       </RelayEnvironmentProvider>
     );
-    console.log("initial...")
-    // debug();
     interface resp {
-      data: CurrentUserQuery$data
+      data: CurrentPersonQuery$data
     }
-    let mockedData
+    let mockedData: any
     await act(async () => {
       env.mock.resolveMostRecentOperation((op) => {
         console.log(`operation `, op);
         mockedData = MockPayloadGenerator.generate(op);
         console.log(mockedData);
         return mockedData;
-        // return {
-        //   data: {
-        //     currentPerson: {
-        //       fullName: "Full Name",
-        //       email: "useremail@email.email",
-        //     },
-        //   },
-        // };
       });
-      await waitFor(50);
     });
-    console.log("later...")
-    // debug();
-    expect(2 + 2).toEqual(4);
-    let user = ((mockedData as unknown) as resp).data.currentPerson!;
-    expect(await screen.findByText(new RegExp(user.fullName!))).not.toBe(null);
-    expect(await screen.findByText(new RegExp(user.email!))).not.toBe(null);
+    await waitFor(async () => {
+      let user = ((mockedData as unknown) as resp).data.currentPerson!;
+      expect(await screen.findByText(new RegExp(user.fullName!))).not.toBe(null);
+      expect(await screen.findByText(new RegExp(user.email!))).not.toBe(null);
+
+    });
   });
 });
 export {};
